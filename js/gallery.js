@@ -1,17 +1,18 @@
 // Renders the filter bar and masonry gallery from photos/photos.js.
-// The active filter lives in the URL hash (e.g. index.html#street) so it can be shared.
+// The active filter lives in the URL hash (e.g. index.html#city) so it can be shared.
+// With no hash, the "Featured" view shows the categories listed in SITE.featured.
 (function () {
-  const categories = window.SITE.categories;
+  const { categories, featured } = window.SITE;
   const filterBar = document.getElementById("filters");
   const grid = document.getElementById("gallery");
 
   const currentFilter = () => {
     const hash = decodeURIComponent(location.hash.slice(1));
-    return hash in categories ? hash : "all";
+    return hash in categories ? hash : "featured";
   };
 
   function renderFilters(active) {
-    const buttons = [["all", "All"], ...Object.entries(categories)];
+    const buttons = [["featured", "Featured"], ...Object.entries(categories)];
     filterBar.innerHTML = buttons
       .map(([key, label]) => {
         const selected = key === active;
@@ -26,7 +27,9 @@
   }
 
   function renderGallery(active) {
-    const photos = window.PHOTOS.filter((p) => active === "all" || p.category === active);
+    const photos = window.PHOTOS.filter((p) =>
+      active === "featured" ? featured.includes(p.category) : p.category === active
+    );
     grid.innerHTML = "";
     photos.forEach((photo, i) => {
       const link = document.createElement("a");
@@ -67,7 +70,7 @@
     if (!button) return;
     const key = button.dataset.filter;
     // replaceState so filtering doesn't fill up the back button history.
-    history.replaceState(null, "", key === "all" ? location.pathname : `#${key}`);
+    history.replaceState(null, "", key === "featured" ? location.pathname : `#${key}`);
     render();
   });
   window.addEventListener("hashchange", render);

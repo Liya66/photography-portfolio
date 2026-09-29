@@ -16,12 +16,19 @@ window.SITE = {
   about: {
     greeting: "Hello there, I'm Liya",
     portrait: "assets/avatar.jpg",
+    // Short facts shown as a list under the greeting.
+    highlights: [
+      "MSc Interactive Media, University College Cork (UCC)",
+      "8 years of photography experience",
+      "Red panda lover",
+    ],
     paragraphs: [
       "I'm a photographer drawn to the quiet details — an animal mid-glance, light moving across a landscape, a stranger's expression on a busy city street.",
-      "I shoot wildlife and pets, landscapes, city scenes, and portraits and events. Whatever the subject, I aim for images that feel honest and still.",
-      "If you'd like to work together or just want to talk photography, I'd love to hear from you.",
+      "Over the past 8 years I've photographed wildlife, landscapes, cities, portraits and events. My MSc in Interactive Media from UCC shapes how I think about images: not just what's in the frame, but how people experience it.",
+      "You'll often find me at the red panda enclosure. If you'd like to work together or just want to talk photography, I'd love to hear from you.",
     ],
   },
+  contactPhoto: "assets/contact.jpg",
   // Gallery filters. Keys must match the `category` values in photos/photos.js.
   categories: {
     animals: "Animals",
@@ -29,4 +36,6 @@ window.SITE = {
     city: "City",
     "portraits-events": "Portraits & Events",
   },
+  // The default "Featured" view shows photos from these categories.
+  featured: ["landscape", "animals", "city"],
 };

@@ -98,8 +98,7 @@
       ${details ? `<p class="mt-4 text-sm text-gray-600 dark:text-gray-300">${details}</p>` : ""}
       ${socialLinks ? `<div class="flex justify-center space-x-6 mt-8 text-gray-600 dark:text-gray-300">${socialLinks}</div>` : ""}
       <p class="mt-8 text-xs text-gray-600 dark:text-gray-300">
-        © ${new Date().getFullYear()} ${esc(site.name)} · Template by
-        <a href="https://github.com/JoaoFranco03/photography-portfolio" class="underline" target="_blank" rel="noreferrer">João Franco</a>
+        © ${new Date().getFullYear()} ${esc(site.name)}
       </p>
     </div>`;
 

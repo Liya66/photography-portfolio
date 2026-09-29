@@ -34,6 +34,7 @@
       </div>
       <section class="text-center text-base md:text-start mx-3 col-span-2 md:col-span-1 my-auto">
         <p class="text-3xl font-serif font-bold mb-6"><span id="greeting"></span> <span class="animate-wave">👋</span></p>
+        <ul id="highlights" class="mb-6 space-y-1 font-signika text-lg"></ul>
         <div id="bio" class="space-y-4"></div>
         <a href="contact.html"
           class="inline-block mt-8 py-3 px-5 text-sm font-medium rounded-lg bg-black text-white dark:bg-white dark:text-black hover:opacity-80 transition">
@@ -52,6 +53,13 @@
       const about = window.SITE.about;
       document.getElementById("portrait").src = about.portrait;
       document.getElementById("greeting").textContent = about.greeting;
+      const highlights = document.getElementById("highlights");
+      (about.highlights || []).forEach((text) => {
+        const li = document.createElement("li");
+        li.textContent = text;
+        li.className = "before:content-['—'] before:mr-2 before:text-gray-400";
+        highlights.appendChild(li);
+      });
       const bio = document.getElementById("bio");
       about.paragraphs.forEach((text) => {
         const p = document.createElement("p");

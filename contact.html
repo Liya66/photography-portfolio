@@ -64,8 +64,7 @@
       <div class="col-span-2 md:col-span-1 flex items-center">
         <div
           class="bg-white dark:bg-neutral-900 p-5 pb-20 m-6 md:m-12 shadow-lg border border-gray-100 dark:border-neutral-800 hover:rotate-0 transition duration-500 rotate-6">
-          <img src="https://images.unsplash.com/reserve/yZfr4jmxQyuaE132MWZm_stagnes.jpg?auto=format&fit=crop&w=1200&q=80"
-            alt="" class="aspect-square w-full object-cover h-auto" />
+          <img id="contact-photo" src="" alt="A red panda, photographed by Liya Wang" class="aspect-square w-full object-cover h-auto" />
         </div>
       </div>
     </div>
@@ -75,6 +74,9 @@
 
   <script src="site.config.js"></script>
   <script src="js/site.js"></script>
+  <script>
+    document.getElementById("contact-photo").src = window.SITE.contactPhoto;
+  </script>
 </body>
 
 </html>
