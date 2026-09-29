@@ -5,10 +5,10 @@ window.SITE = {
   description:
     "Photography portfolio of Liya Wang: landscapes, animals, city photography, portraits and events.",
   location: "", // e.g. "Toronto, Canada" — leave empty to hide
-  email: "", // e.g. "hello@liyawang.com" — leave empty to hide
+  email: "liya66.w@gmail.com", // leave empty ("") to hide
   // Leave a link empty ("") to hide that icon.
   socials: {
-    instagram: "",
+    instagram: "https://www.instagram.com/liya_w66/",
     facebook: "",
     linkedin: "",
     behance: "",
