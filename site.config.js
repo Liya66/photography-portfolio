@@ -1,9 +1,9 @@
 // Everything personal about the site lives here. Edit this file, not the HTML.
 window.SITE = {
   name: "Liya Wang",
-  tagline: "Animals, landscapes, cities and people — moments worth a second look.",
+  tagline: "Landscapes, animals, cities and people — moments worth a second look.",
   description:
-    "Photography portfolio of Liya Wang: animals, landscapes, city photography, portraits and events.",
+    "Photography portfolio of Liya Wang: landscapes, animals, city photography, portraits and events.",
   location: "", // e.g. "Toronto, Canada" — leave empty to hide
   email: "", // e.g. "hello@liyawang.com" — leave empty to hide
   // Leave a link empty ("") to hide that icon.
@@ -31,8 +31,8 @@ window.SITE = {
   contactPhoto: "assets/contact.jpg",
   // Gallery filters. Keys must match the `category` values in photos/photos.js.
   categories: {
-    animals: "Animals",
     landscape: "Landscape",
+    animals: "Animals",
     city: "City",
     "portraits-events": "Portraits & Events",
   },

@@ -18,9 +18,9 @@ import sharp from "sharp";
 
 // Source folder name → category key in site.config.js.
 const FOLDERS = {
+  Landscapes: "landscape",
   Animals: "animals",
   City: "city",
-  Landscapes: "landscape",
   "Portraits&Events": "portraits-events",
 };
 
