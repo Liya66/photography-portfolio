@@ -36,8 +36,13 @@
       link.className = "block mb-2 overflow-hidden break-inside-avoid";
 
       const img = document.createElement("img");
-      img.src = photo.src;
-      img.alt = photo.alt || "";
+      img.src = photo.thumb || photo.src;
+      img.alt = photo.alt || `${categories[photo.category]} photograph`;
+      // Known dimensions reserve space, so lazy-loaded images don't make the columns jump.
+      if (photo.width && photo.height) {
+        img.width = photo.width;
+        img.height = photo.height;
+      }
       img.loading = i < 6 ? "eager" : "lazy";
       img.className =
         "block w-full h-auto opacity-0 transition duration-500 transform scale-100 hover:scale-110";

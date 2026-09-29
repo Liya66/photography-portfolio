@@ -18,24 +18,31 @@ Then open http://localhost:3000. `npm run dev` rebuilds the CSS whenever you edi
 
 ## Adding photos
 
-1. Export the photo at about **2000px on the long edge** (JPEG or WebP, ~80% quality) so the site stays fast.
-2. Put it in the folder for its category: `photos/animals/`, `photos/landscape/`, `photos/street/` or `photos/portraits-events/`.
-3. Add one line to [`photos/photos.js`](photos/photos.js):
+Keep your originals in a folder with one subfolder per category: `Animals`, `City`, `Landscapes` and
+`Portraits&Events`. Add new photos there, then run:
 
-   ```js
-   { src: "photos/animals/fox.jpg", alt: "A red fox in the snow", category: "animals", title: "Winter fox" },
-   ```
+```bash
+npm run import-photos -- "/Users/liya/Desktop/portfolio photos"
+```
 
-   `alt` describes the photo for screen readers. `title` is optional and shows as the lightbox caption.
-   Photos appear in the order listed.
+The script:
 
-Delete the Unsplash placeholder lines once you have your own photos.
+- compresses each photo to at most 2560px on the long edge, always under 3 MB, keeping its aspect ratio
+- makes an 800px thumbnail for the gallery grid
+- strips metadata, including GPS location
+- skips exact duplicates
+- updates [`photos/photos.js`](photos/photos.js)
+
+Photos already imported are skipped, so reruns are quick. New photos are added at the end, mixed across categories.
+
+In `photos.js` you can reorder lines and fill in `alt`, a short description for screen readers. You can also
+add `"title": "..."` for a lightbox caption. Re-importing keeps your edits.
+To remove a photo, delete its line and its two files: `photos/<category>/<name>.jpg` and `thumbs/<name>.jpg`.
 
 ## Personal details
 
 Your name, tagline, bio, email, location, social links and gallery categories are all in
-[`site.config.js`](site.config.js). Leave a field empty (`""`) to hide it. Replace `assets/Avatar.png`
-with your own portrait (square works best).
+[`site.config.js`](site.config.js). Leave a field empty (`""`) to hide it. The About page portrait is `assets/avatar.jpg`.
 
 ## Deploying to Netlify
 
