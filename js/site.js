@@ -93,23 +93,23 @@
       .join("");
   }
 
-  const socialLinks = Object.entries(site.socials || {})
-    .filter(([key, url]) => url && icons[key])
-    .map(
-      ([key, url]) => `
-        <a class="transition duration-300 hover:opacity-75" href="${esc(url)}" target="_blank" rel="noreferrer">
-          <span class="sr-only">${labels[key]}</span>
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="${icons[key]}" /></svg>
-        </a>`
-    )
-    .join("");
+  const iconLink = (href, icon, label, external) => `
+    <a class="transition duration-300 hover:opacity-75" href="${esc(href)}" aria-label="${label}" title="${label}"${
+      external ? ' target="_blank" rel="noreferrer"' : ""
+    }>
+      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="${icon}" /></svg>
+    </a>`;
 
-  const details = [
-    site.location && esc(site.location),
-    site.email && `<a href="mailto:${esc(site.email)}" class="underline">${esc(site.email)}</a>`,
+  const socialLinks = [
+    ...Object.entries(site.socials || {})
+      .filter(([key, url]) => url && icons[key])
+      .map(([key, url]) => iconLink(url, icons[key], labels[key], true)),
+    site.email && iconLink(`mailto:${site.email}`, emailIcon, "Email", false),
   ]
     .filter(Boolean)
-    .join("<br />");
+    .join("");
+
+  const details = site.location ? esc(site.location) : "";
 
   document.getElementById("site-footer").innerHTML = `
     <div class="max-w-screen-xl py-16 mx-auto text-center">
